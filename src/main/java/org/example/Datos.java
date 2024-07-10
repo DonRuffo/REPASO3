@@ -13,6 +13,7 @@ public class Datos {
     private JButton registrarButton;
     private JLabel PromedioLabel;
     public JPanel mainPanel;
+    private JButton regresarButton;
 
     public Datos() {
         registrarButton.addActionListener(new ActionListener() {
@@ -44,6 +45,19 @@ public class Datos {
                 }catch (SQLException v){
                     v.printStackTrace();
                 }
+            }
+        });
+        regresarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame MainFrame=new JFrame();
+                MainFrame.setContentPane(new Principal().PanelPrincipal);
+                MainFrame.setTitle("Registro y Consulta");
+                MainFrame.setLocationRelativeTo(null);
+                MainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                MainFrame.pack();
+                MainFrame.setVisible(true);
+                ((JFrame) SwingUtilities.getWindowAncestor(regresarButton)).dispose();
             }
         });
     }

@@ -1,7 +1,6 @@
 package org.example;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
@@ -20,6 +19,8 @@ public class Consulta {
     private JTextField ingresoDatos;
     private JButton buscarButton;
     public JPanel PanelConsulta;
+    private JButton regresarButton;
+
     public Consulta() {
         buscarButton.addActionListener(new ActionListener() {
             @Override
@@ -48,6 +49,19 @@ public class Consulta {
                 }catch(SQLException v){
                     v.printStackTrace();
                 }
+            }
+        });
+        regresarButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame MainFrame=new JFrame();
+                MainFrame.setContentPane(new Principal().PanelPrincipal);
+                MainFrame.setTitle("Registro y Consulta");
+                MainFrame.setLocationRelativeTo(null);
+                MainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                MainFrame.pack();
+                MainFrame.setVisible(true);
+                ((JFrame) SwingUtilities.getWindowAncestor(regresarButton)).dispose();
             }
         });
     }
